@@ -8,10 +8,23 @@ variable "awsprops" {
     subnet       = "subnet-81896c8e"
     publicip     = true
     keyname      = "myseckey"
-    secgroupname = "IAC-Sec-Group"
+    secgroupname = "vestcp-Sec-Group"
   }
 }
 
 provider "aws" {
   region = lookup(var.awsprops, "region")
+}
+
+
+
+#AWS key pair Name
+variable "KeyPair" {
+  description = "Desired name of AWS key pair"
+  default     = "KeyPair"
+}
+#SSH PEM file
+variable "KeyPair_PEM" {
+  description = "SSH PEM file "
+  default     = "KeyPair.pem"
 }
