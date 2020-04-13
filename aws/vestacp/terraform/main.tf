@@ -23,12 +23,10 @@ resource "local_file" "KeyPair_PEM" {
 
 }
 resource "aws_instance" "project-vestacp" {
-  ami                         = lookup(var.awsprops, "ami")
-  instance_type               = lookup(var.awsprops, "itype")
-  subnet_id                   = lookup(var.awsprops, "subnet")
-  associate_public_ip_address = lookup(var.awsprops, "publicip")
-  key_name                    = "${aws_key_pair.KeyPair.id}"
-  user_data                   = "${file("scripts/userdata.sh")}"
+  ami           = lookup(var.awsprops, "ami")
+  instance_type = lookup(var.awsprops, "itype")
+  key_name      = "${aws_key_pair.KeyPair.id}"
+  user_data     = "${file("scripts/userdata.sh")}"
 
 
   vpc_security_group_ids = [

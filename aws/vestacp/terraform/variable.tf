@@ -5,15 +5,12 @@ variable "awsprops" {
     vpc          = "vpc-5234832d"
     ami          = "ami-0c1bea58988a989155"
     itype        = "t2.micro"
-    subnet       = "subnet-81896c8e"
-    publicip     = true
-    keyname      = "myseckey"
     secgroupname = "vestcp-Sec-Group"
   }
 }
 
 provider "aws" {
-  region = lookup(var.awsprops, "region")
+  region = "us-east-1"
 }
 
 
